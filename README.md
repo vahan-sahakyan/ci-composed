@@ -7,7 +7,7 @@
 - docker CLI
 - docker-compose
 
-#### 2. Installation
+#### 2. Install
 
 ```bash
 $ git clone https://github.com/vahan-sahakyan/ci-composed.git && cd ci-composed
@@ -17,7 +17,7 @@ $ git clone https://github.com/vahan-sahakyan/ci-composed.git && cd ci-composed
 $ chmod +x install.sh && ./install.sh
 ```
 
-#### 2. Uninstall
+#### 3. Uninstall
 
 ```bash
 $ chmod +x uninstall.sh && ./uninstall.sh
