@@ -1,6 +1,17 @@
 #!/bin/bash
 
-git clone https://github.com/vahan-sahakyan/code-inspect-frontend.git frontend
-git clone https://github.com/vahan-sahakyan/code-inspect-backend.git backend
+if [[ ! -d "frontend" ]]; then mkdir frontend; fi
+if [[ ! -d "backend" ]]; then mkdir backend; fi
 
-docker-compose up
+if [[ -z `ls frontend` ]];
+then
+  git clone https://github.com/vahan-sahakyan/code-inspect-frontend.git frontend
+fi
+
+if [[ -z `ls backend` ]];
+then
+  git clone https://github.com/vahan-sahakyan/code-inspect-backend.git backend
+fi
+docker-compose up -d
+docker ps
+
