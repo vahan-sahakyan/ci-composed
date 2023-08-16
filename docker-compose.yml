@@ -30,7 +30,6 @@ services:
     environment:
       MYSQL_DATABASE: code_inspect_db
       MYSQL_ROOT_PASSWORD: asdfasdf
-      MYSQL_USER: root
       MYSQL_PASSWORD: asdfasdf
 volumes:
   db-data:
