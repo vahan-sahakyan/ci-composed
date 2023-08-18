@@ -14,6 +14,7 @@ services:
     depends_on:
       - mysql-container
       - kafka-container
+      - zookeeper-container
   # FRONT-END
   frontend:
     build:
@@ -53,5 +54,24 @@ services:
     environment:
       KAFKA_ADVERTISED_HOST_NAME: kafka-container
       KAFKA_CREATE_TOPICS: "db-changes:1:1"
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper-container:2181
+
+      KAFKA_ADVERTISED_PORT: 9092
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_AUTO_OFFSET_RESET: earliest
+    depends_on:
+      - zookeeper-container
+  # ZOOKEEPER
+  zookeeper-container:
+    image: wurstmeister/zookeeper
+    ports:
+      - 2181:2181
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+    volumes:
+      - zookeeper-data:/data
+      - zookeeper-datalog:/datalog
 volumes:
   db-data:
+  zookeeper-data:
+  zookeeper-datalog:
