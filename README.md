@@ -1,5 +1,10 @@
 ## Code Inspect 📦 Docker Composed
 
+### External Repository Links
+
+- [Frontend](https://github.com/vahan-sahakyan/code-inspect-frontend)
+- [Backend](https://github.com/vahan-sahakyan/code-inspect-backend)
+
 ### Get Started
 
 #### 1. Prerequisites
