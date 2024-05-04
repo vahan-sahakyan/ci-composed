@@ -20,6 +20,8 @@ services:
     build:
       context: frontend
       dockerfile: Dockerfile
+    environment:
+      - TZ=Asia/Yerevan
     ports:
       - 80:5173
     depends_on:
@@ -30,6 +32,8 @@ services:
     image: mysql:8.0.28-oracle
     volumes:
       - db-data:/var/lib/mysql
+    ports:
+      - 3307:33060
     environment:
       MYSQL_DATABASE: code_inspect_db
       MYSQL_ROOT_PASSWORD: asdfasdf
