@@ -1,4 +1,5 @@
-const os = require("os");
+const os = require("node:os");
+const child_process = require("node:child_process");
 const WebSocket = require("ws");
 const { KafkaClient, Consumer } = require("kafka-node");
 
@@ -25,14 +26,28 @@ const kafkaClient = new KafkaClient({
   clientId: "ci-kafka-consumer",
 });
 
-const consumer = new Consumer(kafkaClient, [{ topic: "db-changes" }], {
-  fromOffset: false,
-});
+let consumer;
+
+function createConsumer() {
+  consumer = new Consumer(kafkaClient, [{ topic: "db-changes" }], {
+    fromOffset: false,
+  });
+
+  consumer.on("error", (error) => {
+    console.error("Error occurred:", error);
+    child_process.execSync("sleep 2");
+    console.log("\nRestarting consumer in 2 second ...\n");
+    createConsumer();
+  });
+}
+
+createConsumer();
 
 console.log(`WebSocket Serving on Port: ${WS_PORT}`);
 server.on("connection", (socket) => {
   console.log("NEW CONNECTION");
   consumer.on("message", (message) => {
     socket.send(JSON.stringify(message));
+    console.log("Received message:", message);
   });
 });
