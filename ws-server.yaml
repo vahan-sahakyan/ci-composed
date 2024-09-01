@@ -1,0 +1,48 @@
+# ws-server-deployment.yaml
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ws-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ws-server
+  template:
+    metadata:
+      labels:
+        app: ws-server
+    spec:
+      containers:
+      - name: ws-server
+        image: vahansahakyanop/code-inspect-ws-server
+        ports:
+        - containerPort: 7078
+        env:
+        - name: WS_APP_WS_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: ws-server-config
+              key: WS_APP_WS_PORT
+        - name: WS_APP_KAFKA_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              name: ws-server-config
+              key: WS_APP_KAFKA_HOSTNAME
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ws-server-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 7078
+    targetPort: 7078
+  selector:
+    app: ws-server
+

@@ -16,8 +16,8 @@ const LOCAL_IP = (function () {
   return "localhost";
 })();
 
-const WS_PORT = process.env.WS_ENV_WS_PORT || 7078;
-const HOSTNAME = process.env.WS_ENV_KAFKA_HOSTNAME || LOCAL_IP;
+const WS_PORT = process.env.WS_APP_WS_PORT || 7078;
+const HOSTNAME = process.env.WS_APP_KAFKA_HOSTNAME || LOCAL_IP;
 
 const server = new WebSocket.Server({ port: WS_PORT });
 

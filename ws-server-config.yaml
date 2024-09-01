@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ws-server-config
+data:
+  WS_APP_WS_PORT: "7078"
+  WS_APP_KAFKA_HOSTNAME: "8080"

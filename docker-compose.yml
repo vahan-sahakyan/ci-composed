@@ -46,8 +46,8 @@ services:
     ports:
       - 7078:7078
     environment:
-      WS_ENV_WS_PORT: 7078
-      WS_ENV_KAFKA_HOSTNAME: kafka-container
+      WS_APP_WS_PORT: 7078
+      WS_APP_KAFKA_HOSTNAME: kafka-container
     depends_on:
       - kafka-container
   # KAFKA

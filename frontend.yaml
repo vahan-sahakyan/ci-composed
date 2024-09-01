@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: vahansahakyanop/code-inspect-frontend:latest
+        ports:
+        - containerPort: 5173
+        env:
+        - name: TZ
+          value: "Asia/Yerevan"
+        - name: VITE_BACKEND_URL
+          valueFrom:
+            configMapKeyRef:
+              name: frontend-config
+              key: VITE_BACKEND_URL
+        - name: VITE_BACKEND_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: frontend-config
+              key: VITE_BACKEND_PORT
+        - name: VITE_WS_URL
+          valueFrom:
+            configMapKeyRef:
+              name: frontend-config
+              key: VITE_WS_URL
+        - name: VITE_WS_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: frontend-config
+              key: VITE_WS_PORT
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 5173
+  selector:
+    app: frontend
