@@ -4,8 +4,8 @@ metadata:
   name: frontend-config
   namespace: default
 data:
-  VITE_BACKEND_URL: backend-service
+  VITE_BACKEND_URL: localhost
   VITE_BACKEND_PORT: "8080"
-  VITE_WS_URL: ws-server-service
+  VITE_WS_URL: localhost
   VITE_WS_PORT: "7078"
   VITE_WS_PORT2: "7078"

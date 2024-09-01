@@ -5,6 +5,7 @@ kubectl apply -f frontend.yaml
 kubectl apply -f ws-server-config.yaml
 kubectl apply -f ws-server.yaml
 kubectl apply -f mysql.yaml
+kubectl apply -f kafka-config.yaml
 kubectl apply -f kafka.yaml
 kubectl apply -f zookeeper.yaml
 kubectl apply -f ingress.yaml
