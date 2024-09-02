@@ -3,38 +3,44 @@ kind: Ingress
 metadata:
   name: code-inspect-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"  # Disable SSL redirection if not using HTTPS
+    kubernetes.io/ingress.class: "gce"
+    networking.gke.io/managed-certificates: "ci-mcrt" # Replace with your managed certificate name
+    kubernetes.io/ingress.global-static-ip-name: "test"
 spec:
+  tls:
+    - hosts:
+        - backend.codeinspect.dev
+        - codeinspect.dev
+        - ws.codeinspect.dev
+      secretName: ci-mcrt
   rules:
-  - host: backend.codeinspect.dev
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: backend-service
-            port:
-              number: 8080
-  - host: frontend.codeinspect.dev
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: frontend-service
-            port:
-              number: 80
-  - host: ws.codeinspect.dev
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: ws-server-service
-            port:
-              number: 7078
-              
+    - host: backend.codeinspect.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: backend-service
+                port:
+                  number: 8080
+    - host: codeinspect.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend-service
+                port:
+                  number: 80
+    - host: ws.codeinspect.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ws-server-service
+                port:
+                  number: 7078
