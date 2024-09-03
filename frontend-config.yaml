@@ -6,7 +6,7 @@ metadata:
 data:
   VITE_BACKEND_PROTOCOL: https
   VITE_BACKEND_URL: backend.codeinspect.dev
-  VITE_BACKEND_PORT: "8080"
+  VITE_BACKEND_PORT: "80"
   VITE_WS_PROTOCOL: wss
   VITE_WS_URL: ws.codeinspect.dev
-  VITE_WS_PORT: "7078"
+  VITE_WS_PORT: "80"
