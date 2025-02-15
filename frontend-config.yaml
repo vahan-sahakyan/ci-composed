@@ -9,3 +9,5 @@ data:
   VITE_WS_URL: localhost
   VITE_WS_PORT: "7078"
   VITE_WS_PORT2: "7078"
+  VITE_BACKEND_PROTOCOL: http
+  VITE_WS_PROTOCOL: ws

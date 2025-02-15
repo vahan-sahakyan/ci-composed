@@ -20,6 +20,11 @@ spec:
         env:
         - name: TZ
           value: "Asia/Yerevan"
+        - name: VITE_BACKEND_PROTOCOL
+          valueFrom:
+            configMapKeyRef:
+              name: frontend-config
+              key: VITE_BACKEND_PROTOCOL
         - name: VITE_BACKEND_URL
           valueFrom:
             configMapKeyRef:
@@ -30,6 +35,11 @@ spec:
             configMapKeyRef:
               name: frontend-config
               key: VITE_BACKEND_PORT
+        - name: VITE_WS_PROTOCOL
+          valueFrom:
+            configMapKeyRef:
+              name: frontend-config
+              key: VITE_WS_PROTOCOL
         - name: VITE_WS_URL
           valueFrom:
             configMapKeyRef:
