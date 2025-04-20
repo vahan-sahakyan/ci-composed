@@ -38,6 +38,11 @@ spec:
             configMapKeyRef:
               name: backend-config
               key: DB_PASSWORD
+        - name: ENABLE_KAFKA
+          valueFrom:
+            configMapKeyRef:
+              name: backend-config
+              key: ENABLE_KAFKA
 
 
 ---

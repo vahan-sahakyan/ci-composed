@@ -43,3 +43,6 @@ k8s_start:
 k8s_restart:
 	./bin/k8s_restart.sh
 
+k8s_reapply:
+	./bin/k8s_reapply.sh $(KEYWORD)
+

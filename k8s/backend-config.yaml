@@ -7,3 +7,4 @@ data:
   DB_URL: jdbc:mysql://mysql-service/code_inspect_db
   DB_USERNAME: root
   DB_PASSWORD: asdfasdf
+  ENABLE_KAFKA: "true"
