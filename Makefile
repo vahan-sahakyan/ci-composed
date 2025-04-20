@@ -6,8 +6,8 @@ clone:
 	./bin/clone.sh
 
 cleanup:
-	rm -rf backend
-	rm -rf frontend
+	rm -rf _backend
+	rm -rf _frontend
 
 reclone:
 	make cleanup

@@ -2,8 +2,8 @@
 # MAIN
 #############################
 
-backend
-frontend
+_backend
+_frontend
 
 
 #############################
@@ -46,6 +46,7 @@ package-lock.json
 .env
 .env.*
 !.env.sample
+
 
 #############################
 # BACKEND

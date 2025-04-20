@@ -2,7 +2,7 @@ services:
   # BACK-END
   backend:
     build:
-      context: backend
+      context: _backend
       dockerfile: Dockerfile
     ports:
       - 8080:8080
@@ -18,7 +18,7 @@ services:
   # FRONT-END
   frontend:
     build:
-      context: frontend
+      context: _frontend
       dockerfile: Dockerfile
     environment:
       - TZ=Asia/Yerevan

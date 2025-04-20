@@ -1,12 +1,13 @@
 #!/bin/bash
 
-if [[ ! -d "frontend" ]]; then mkdir frontend; fi
-if [[ ! -d "backend" ]]; then mkdir backend; fi
+apps=(
+  "code-inspect-frontend"
+  "code-inspect-backend"
+)
 
-if [[ -z $(ls frontend) ]]; then
-  git clone https://github.com/vahan-sahakyan/code-inspect-frontend.git frontend
-fi
+for app in "${apps[@]}"; do
+  _appname="_${app#code-inspect-}"
 
-if [[ -z $(ls backend) ]]; then
-  git clone https://github.com/vahan-sahakyan/code-inspect-backend.git backend
-fi
+  git clone "https://github.com/vahan-sahakyan/$app.git" $_appname
+  echo "✅ Finished cloning $app into $_appname"
+done

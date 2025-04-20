@@ -24,5 +24,5 @@ $ make install
 #### 3. Uninstall
 
 ```bash
-$ make dc_down
+$ make uninstall
 ```
