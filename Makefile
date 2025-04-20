@@ -46,3 +46,9 @@ k8s_restart:
 k8s_reapply:
 	./bin/k8s_reapply.sh $(KEYWORD)
 
+##########################
+# deploy to dockerhub
+##########################
+
+dh_deploy:
+	./bin/dh_deploy.sh $(PROJECT)
