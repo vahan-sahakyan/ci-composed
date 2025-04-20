@@ -9,7 +9,9 @@
 
 #### 1. Prerequisites
 
-- docker CLI
+- docker
+- minikube
+- kubectl
 
 #### 2. Run With Docker
 
